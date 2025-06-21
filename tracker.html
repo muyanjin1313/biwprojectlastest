@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donation Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #f1f8e9, #e0f7fa);
+      color: #333;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #2e7d32;
+    }
+
+    .progress-container {
+      background-color: #e0e0e0;
+      border-radius: 30px;
+      overflow: hidden;
+      height: 30px;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(to right, #66bb6a, #43a047);
+      color: white;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+      transition: width 1s ease-in-out;
+      white-space: nowrap;
+    }
+
+    .goal-info {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.2rem;
+    }
+
+    .thank-you {
+      background-color: #fff9c4;
+      border-left: 5px solid #fbc02d;
+      padding: 15px;
+      margin: 20px auto;
+      max-width: 600px;
+      font-style: italic;
+      font-size: 1.1rem;
+    }
+
+    table {
+      width: 100%;
+      max-width: 800px;
+      margin: 30px auto;
+      border-collapse: collapse;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #81c784;
+      color: white;
+    }
+
+    .usage-section {
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: #f1f8e9;
+      padding: 20px;
+      border-left: 5px solid #66bb6a;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .usage-section h2 {
+      color: #388e3c;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .usage-table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #ffffff;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+      margin-top: 15px;
+    }
+
+    .usage-table th, .usage-table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .usage-table th {
+      background-color: #a5d6a7;
+      color: #2e7d32;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: #666;
+    }
+  </style>
+</head>
+
+<div style="margin: 20px 0; display: flex; justify-content: space-between; align-items: center;">
+  <a href="pawsrescue.html" 
+     style="display: inline-block; 
+            background-color: Blue; 
+            color: white; 
+            padding: 8px 15px;  
+            border-radius: 8px; 
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            min-width: 80px; 
+            text-align: center;">
+    Home
+  </a>
+
+  <a href="contact us.html" 
+     style="display: inline-block; 
+            background-color: Blue; 
+            color: white; 
+            padding: 8px 15px;  
+            border-radius: 8px; 
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            min-width: 80px; 
+            text-align: center;">
+    Contact Us
+  </a>
+</div>
+
+<body>
+  <header>
+    <h1>Donation Tracker</h1>
+  </header>
+
+  <div class="goal-info">
+    <p>Our fundraising goal is <strong>RM 10,000</strong>. Help us make a difference!</p>
+  </div>
+
+  <p style="text-align: center; margin: 20px 0;">
+    <span style="display: inline-block; 
+                background-color: #FF914D; 
+                color: white; 
+                padding: 10px 25px; 
+                border-radius: 8px; 
+                font-weight: bold;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                transition: all 0.3s ease;">
+      Progress:
+    </span>
+  </p>
+
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar">RM 1,100</div>
+  </div>
+
+  <div class="thank-you">
+    Thank you to all our generous donors! Your contributions are helping change lives.
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Donor</th>
+        <th>Amount (RM)</th>
+      </tr>
+    </thead>
+    <tbody id="donation-log">
+      <tr><td>2025-05-20</td><td>Alice</td><td>RM 150</td></tr>
+      <tr><td>2025-05-15</td><td>Bob</td><td>RM 200</td></tr>
+      <tr><td>2025-05-10</td><td>Charlie</td><td>RM 100</td></tr>
+      <tr><td>2025-05-05</td><td>David</td><td>RM 250</td></tr>
+      <tr><td>2025-05-03</td><td>Emma</td><td>RM 300</td></tr>
+      <tr><td>2025-05-01</td><td>Faisal</td><td>RM 100</td></tr>
+    </tbody>
+  </table>
+
+  <div class="usage-section">
+    <h2>How Donations Are Used</h2>
+    <table class="usage-table">
+      <thead>
+        <tr>
+          <th>Project</th>
+          <th>Description</th>
+          <th>Amount Used (RM)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Education Projects</td>
+          <td>Provided school supplies and scholarships</td>
+          <td>RM 500</td>
+        </tr>
+        <tr>
+          <td>Healthcare Support</td>
+          <td>Local clinics received funding for medical check-ups</td>
+          <td>RM 300</td>
+        </tr>
+        <tr>
+          <td>Animal Welfare</td>
+          <td>Rescue shelters received food and care supplies</td>
+          <td>RM 200</td>
+        </tr>
+        <tr>
+          <td>Community Events</td>
+          <td>Organized outreach and engagement programs</td>
+          <td>RM 100</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Charity Foundation. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // JavaScript to update progress bar to 11%
+    const totalDonated = 1100;
+    const goal = 10000;
+    const progress = Math.min((totalDonated / goal) * 100, 100);
+
+    const progressBar = document.getElementById("progress-bar");
+    progressBar.style.width = progress + "%";
+
+    // Display donation amount and percentage
+    progressBar.textContent = "RM " + totalDonated.toLocaleString() + " (" + progress.toFixed(1) + "%)";
+  </script>
+</body>
+
+</html>

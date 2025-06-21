@@ -1,0 +1,168 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | Paws & Care</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://wallpapercave.com/wp/wp9015357.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+
+    .dashboard-container {
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      max-width: 650px;
+      width: 90%;
+    }
+
+    h1 {
+      color: #fff;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      font-size: 2.2em;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 25px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    a {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: rgba(242, 159, 5, 0.9);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    a:hover {
+      background-color: rgba(201, 110, 5, 0.9);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin: 30px 0;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .stat-box {
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      border-radius: 12px;
+      width: 150px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .stat-box i {
+      font-size: 32px;
+      margin-bottom: 10px;
+      animation: bounce 2s infinite;
+    }
+
+    .stat-box h3 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .stat-box span {
+      display: block;
+      margin-top: 5px;
+      font-size: 14px;
+      color: #ddd;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <h1>Welcome to Paws & Care Foundation!</h1>
+    <p>You are now logged in to our animal rescue portal.</p>
+
+    <!-- Stats Section -->
+    <div class="stats">
+      <div class="stat-box">
+        <i class="fas fa-donate"></i>
+        <h3 id="donations">113k</h3>
+        <span>Total Donations</span>
+      </div>
+      <div class="stat-box">
+        <i class="fas fa-paw"></i>
+        <h3 id="rescued">0</h3>
+        <span>Animals Rescued</span>
+      </div>
+      <div class="stat-box">
+        <i class="fas fa-users"></i>
+        <h3 id="volunteers">0</h3>
+        <span>Volunteers</span>
+      </div>
+    </div>
+
+    <a href="pawsrescue.html">Continue to Website</a>
+  </div>
+
+  <script>
+    // Animate counters
+    function animateCount(id, endValue, duration) {
+      let current = 0;
+      const stepTime = Math.abs(Math.floor(duration / endValue));
+      const obj = document.getElementById(id);
+      const timer = setInterval(() => {
+        current++;
+        obj.textContent = current;
+        if (current >= endValue) clearInterval(timer);
+      }, stepTime);
+    }
+
+    // Start animations
+    window.onload = () => {
+      animateCount('donations', 123, 1000);    // 123 total donations
+      animateCount('rescued', 87, 1200);       // 87 animals rescued
+      animateCount('volunteers', 45, 1500);    // 45 volunteers
+    };
+  </script>
+</body>
+</html>

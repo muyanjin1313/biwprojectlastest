@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login | Paws & Care</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://wallpapercave.com/wp/wp9015357.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: -1;
+    }
+
+    h1.logo {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Poppins', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #FF914D, #6A4C93);
+      color: #FFD700;
+      padding: 15px 25px;
+      border-radius: 15px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: transform 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    h1.logo:hover {
+      transform: translateX(-50%) scale(1.05);
+    }
+
+    h1.logo::before {
+      content: '\f1b0';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: white;
+      margin-right: 8px;
+      font-size: 24px;
+    }
+
+    .login-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) translateY(30px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.5s ease;
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 40px 30px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .login-box.show {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+      pointer-events: all;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid rgba(255,255,255,0.75);
+      width: 0;
+      animation: typing 2s steps(20, end) forwards;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 6px;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+
+    input:focus {
+      background-color: white;
+      border: 1px solid #6a4c93;
+      outline: none;
+      box-shadow: 0 0 8px rgba(106, 76, 147, 0.5);
+    }
+
+    .button {
+      width: 100%;
+      background-color: rgba(106, 76, 147, 0.9);
+      color: white;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .button:hover {
+      background-color: rgba(255, 145, 77, 0.9);
+      transform: translateY(-2px);
+    }
+
+    .button::after {
+      content: "";
+      position: absolute;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+      transform: scale(1);
+      opacity: 0;
+      pointer-events: none;
+      animation: ripple 0.6s linear;
+    }
+
+    .switch-button {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+      text-decoration: underline;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes ripple {
+      0% {
+        transform: scale(1);
+        opacity: 0.6;
+      }
+      100% {
+        transform: scale(100);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="logo">
+    <a href="login.html" style="color:inherit;text-decoration:none;">Paws & Care Foundation</a>
+  </h1>
+
+  <div class="login-box show" id="loginForm">
+    <h2>Login</h2>
+    <form onsubmit="return loginUser()">
+      <input type="text" id="loginUsername" placeholder="Username" required /><br />
+      <input type="password" id="loginPassword" placeholder="Password" required /><br />
+      <button type="submit" class="button">Login</button>
+      <button type="button" class="switch-button" onclick="showRegisterForm()">Don't have an account? Register</button>
+      <button type="button" class="switch-button" onclick="showRecoveryForm()">Forgot password?</button>
+    </form>
+  </div>
+
+  <div class="login-box" id="registerForm">
+    <h2>Register</h2>
+    <form onsubmit="return registerUser()">
+      <input type="text" id="regUsername" placeholder="Username" required /><br />
+      <input type="email" id="regEmail" placeholder="Email (for recovery)" required /><br />
+      <input type="password" id="regPassword" placeholder="Password" required /><br />
+      <input type="password" id="regConfirmPassword" placeholder="Confirm Password" required /><br />
+      <button type="submit" class="button">Register</button>
+      <button type="button" class="switch-button" onclick="showLoginForm()">Already have an account? Login</button>
+    </form>
+  </div>
+
+  <div class="login-box" id="recoveryForm">
+    <h2>Password Recovery</h2>
+    <form onsubmit="return recoverPassword()">
+      <input type="text" id="recoverUsername" placeholder="Username" required /><br />
+      <input type="email" id="recoverEmail" placeholder="Registered Email" required /><br />
+      <button type="submit" class="button">Verify Account</button>
+      <button type="button" class="switch-button" onclick="showLoginForm()">Back to Login</button>
+    </form>
+  </div>
+
+  <div class="login-box" id="changePasswordForm">
+    <h2>Reset Your Password</h2>
+    <form onsubmit="return changePassword()">
+      <input type="hidden" id="changeUsername" />
+      <input type="hidden" id="changeEmail" />
+      <input type="password" id="newPassword" placeholder="New Password" required /><br />
+      <input type="password" id="confirmNewPassword" placeholder="Confirm New Password" required /><br />
+      <button type="submit" class="button">Set New Password</button>
+      <button type="button" class="switch-button" onclick="showLoginForm()">Back to Login</button>
+    </form>
+  </div>
+
+  <script>
+    if (!localStorage.getItem('users')) {
+      localStorage.setItem('users', JSON.stringify({}));
+    }
+
+    function switchTo(formId) {
+      document.querySelectorAll('.login-box').forEach(el => el.classList.remove('show'));
+      document.getElementById(formId).classList.add('show');
+    }
+
+    function showRegisterForm() { switchTo('registerForm'); }
+    function showLoginForm() { switchTo('loginForm'); }
+    function showRecoveryForm() { switchTo('recoveryForm'); }
+    function showChangePasswordForm() { switchTo('changePasswordForm'); }
+
+    function loginUser() {
+      const username = document.getElementById("loginUsername").value;
+      const password = document.getElementById("loginPassword").value;
+      if (username && password) {
+        alert("Login successful!");
+        window.location.href = "dashboard.html";
+      } else {
+        alert("Please enter both username and password.");
+      }
+      return false;
+    }
+
+    function registerUser() {
+      const username = document.getElementById("regUsername").value;
+      const email = document.getElementById("regEmail").value;
+      const password = document.getElementById("regPassword").value;
+      const confirmPassword = document.getElementById("regConfirmPassword").value;
+      const users = JSON.parse(localStorage.getItem('users'));
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return false;
+      }
+
+      if (users[username]) {
+        alert("Username already exists!");
+        return false;
+      }
+
+      users[username] = { password, email };
+      localStorage.setItem('users', JSON.stringify(users));
+      alert("Registration successful! Please login.");
+      showLoginForm();
+      return false;
+    }
+
+    function recoverPassword() {
+      const username = document.getElementById("recoverUsername").value;
+      const email = document.getElementById("recoverEmail").value;
+
+      if (username && email) {
+        document.getElementById("changeUsername").value = username;
+        document.getElementById("changeEmail").value = email;
+        alert("Account verified! Please set a new password.");
+        showChangePasswordForm();
+      } else {
+        alert("Please enter both username and email.");
+      }
+      return false;
+    }
+
+    function changePassword() {
+      const username = document.getElementById("changeUsername").value;
+      const email = document.getElementById("changeEmail").value;
+      const newPassword = document.getElementById("newPassword").value;
+      const confirmNewPassword = document.getElementById("confirmNewPassword").value;
+      const users = JSON.parse(localStorage.getItem('users'));
+
+      if (newPassword !== confirmNewPassword) {
+        alert("New passwords do not match!");
+        return false;
+      }
+
+      if (username) {
+        users[username] = { password: newPassword, email };
+        localStorage.setItem('users', JSON.stringify(users));
+        alert("Password updated successfully! Please login with your new password.");
+        showLoginForm();
+      } else {
+        alert("Error updating password. Please try again.");
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>

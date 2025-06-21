@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Donate | Paws & Care Foundation</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://wallpaperaccess.com/full/1209274.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 60px 20px 40px;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.3); /* Dark overlay for contrast */
+      z-index: -1;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px; /* Near top */
+      left: 20px; /* Left side */
+      font-family: 'Poppins', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #FF914D, #6A4C93);
+      color: #FFD700;
+      padding: 15px 25px;
+      border-radius: 15px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: transform 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .logo:hover {
+      transform: scale(1.05); /* Hover effect without centering adjustment */
+    }
+
+    .logo::before {
+      content: '\f1b0';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: white;
+      margin-right: 8px;
+      font-size: 24px;
+    }
+
+    .payment-container {
+      background-color: white;
+      padding: 30px 25px;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    h2 {
+      text-align: center;
+      color: #4A6B2A;
+      margin-bottom: 25px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    input:focus, select:focus {
+      border-color: #6A4C93;
+      outline: none;
+    }
+
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      font-weight: normal;
+      cursor: pointer;
+      font-size: 15px;
+      color: #333;
+    }
+
+    .radio-group input[type="radio"] {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #6A4C93;
+      border-radius: 50%;
+      margin: 0 8px 0 0;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .radio-group input[type="radio"]:checked {
+      border-color: #6A4C93;
+      background-color: #6A4C93;
+    }
+
+    .radio-group input[type="radio"]:checked::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background-color: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 0.2s ease;
+    }
+
+    .radio-group input[type="radio"]:hover {
+      border-color: #FF914D;
+      transform: scale(1.1);
+    }
+
+    .radio-group input[type="radio"]:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(106, 76, 147, 0.2);
+    }
+
+    .button {
+      background-color: #6A4C93;
+      color: white;
+      padding: 14px;
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #FF914D;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .qr-image {
+      width: 100%;
+      height: auto;
+      border: 1px solid #ddd;
+      padding: 6px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    p.note {
+      text-align: center;
+      font-size: 0.9em;
+      color: #666;
+      margin-top: -10px;
+      margin-bottom: 15px;
+    }
+
+    .auth-container {
+      background-color: #f8f5f2;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border: 1px solid #e2d1c3;
+    }
+
+    .auth-note {
+      font-size: 0.9em;
+      color: #4A6B2A;
+      margin-bottom: 10px;
+      line-height: 1.4;
+      font-weight: bold;
+    }
+
+    .auth-checkbox label {
+      font-weight: normal;
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      color: #333;
+    }
+
+    .auth-checkbox input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin: 0 8px 0 0;
+      cursor: pointer;
+    }
+
+    .error {
+      color: #D8000C;
+      font-size: 0.9em;
+      margin-bottom: 10px;
+      text-align: center;
+      display: none;
+    }
+
+    .thank-you-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      background-color: white;
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      z-index: 1000;
+      animation: popIn 0.3s ease-out forwards;
+    }
+
+    .thank-you-modal h3 {
+      color: #4A6B2A;
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+
+    .thank-you-modal p {
+      color: #333;
+      font-size: 16px;
+      margin: 5px 0;
+    }
+
+    .thank-you-modal .redirect-note {
+      font-size: 14px;
+      color: #666;
+      margin-top: 20px;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      768px) {
+      .logo {
+        font-size: 24px;
+        padding: 12px 20px;
+      }
+      .logo::before {
+        font-size: 18px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Logo -->
+  <h1 class="logo">
+    <a href="pawsrescue.html">Paws & Care Foundation</a>
+  </h1>
+
+  <!-- Donation Form -->
+  <div class="payment-container">
+    <h2>Make a Donation</h2>
+    <form id="paymentForm" onsubmit="return processPayment()">
+      <label for="username">Your Name</label>
+      <input type="text" id="username" placeholder="Enter your name" required>
+
+      <label for="amount">Donation Amount (MYR)</label>
+      <input type="number" id="amount" min="1" placeholder="Enter amount" required>
+
+      <label>Donation Type</label>
+      <div class="radio-group">
+        <label><input type="radio" name="donationType" value="one-time" checked onclick="toggleRecurringFields()"> One-Time Donation</label>
+        <label><input type="radio" name="donationType" value="recurring" onclick="toggleRecurringFields()"> Recurring Monthly Donation</label>
+      </div>
+
+      <div id="recurringFields" class="hidden auth-container">
+        <p class="auth-note">Important: By authorizing, you agree to monthly donations charged to your selected payment method. You must cancel at least 3 days before the end of the month to stop the next payment.</p>
+        <div class="auth-checkbox">
+          <label><input type="checkbox" id="recurringAuth"> I authorize recurring monthly payments</label>
+        </div>
+      </div>
+
+      <label>Payment Method</label>
+      <div class="radio-group">
+        <label><input type="radio" name="method" value="FPX" checked onclick="showMethodFields()"> FPX (Online Banking)</label>
+        <label><input type="radio" name="method" value="Card" onclick="showMethodFields()"> Debit / Credit Card</label>
+        <label><input type="radio" name="method" value="TNG" onclick="showMethodFields()"> Touch 'n Go eWallet</label>
+      </div>
+
+      <!-- FPX Fields -->
+      <div id="fpxFields">
+        <label for="bank">Choose Your Bank</label>
+        <select id="bank">
+          <option value="">-- Select Bank --</option>
+          <option value="CIMB">CIMB Bank</option>
+          <option value="RHB">RHB Bank</option>
+          <option value="Maybank">Maybank</option>
+          <option value="AEON">AEON Bank</option>
+          <option value="OCBC">OCBC Bank</option>
+        </select>
+
+        <label for="fpxAcc">Account Number</label>
+        <input type="text" id="fpxAcc" placeholder="Enter account number">
+      </div>
+
+      <!-- Card Fields -->
+      <div id="cardFields" class="hidden">
+        <label for="cardNum">Card Number</label>
+        <input type="text" id="cardNum" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" pattern="\d{4}\s?\d{4}\s?\d{4}\s?\d{4}" title="Enter a 16-digit card number">
+
+        <label for="expiry">Expiry Date (MM/YY)</label>
+        <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" pattern="(0[1-9]|1[0-2])\/[0-9]{2}" title="Enter expiry in MM/YY format">
+
+        <label for="cvc">CVC</label>
+        <input type="text" id="cvc" placeholder="3 digits" maxlength="3" pattern="\d{3}" title="Enter a 3-digit CVC">
+      </div>
+
+      <!-- TNG Fields -->
+      <div id="tngFields" class="hidden">
+        <label>DuitNow QR Code</label>
+        <img src="photo_2025-05-23_15-35-38.jpg" alt="DuitNow QR" class="qr-image">
+        <p class="note">Scan with Touch 'n Go or DuitNow app to complete your donation.</p>
+      </div>
+
+      <p id="errorMessage" class="error"></p>
+      <button type="submit" class="button">Pay Now</button>
+    </form>
+  </div>
+
+  <!-- Thank You Modal -->
+  <div id="thankYouModal" class="thank-you-modal hidden">
+    <h3>Thank You for Your Donation!</h3>
+    <p id="thankYouDetails"></p>
+    <p class="redirect-note">Redirecting to homepage in 3 seconds...</p>
+  </div>
+  <div id="modalBackdrop" class="modal-backdrop hidden"></div>
+
+  <script>
+    // Initialize localStorage for donations if not exists
+    if (!localStorage.getItem('donations')) {
+      localStorage.setItem('donations', JSON.stringify([]));
+    }
+
+    function toggleRecurringFields() {
+      const donationType = document.querySelector('input[name="donationType"]:checked').value;
+      const recurringFields = document.getElementById('recurringFields');
+      const recurringAuth = document.getElementById('recurringAuth');
+      recurringFields.classList.toggle('hidden', donationType !== 'recurring');
+      if (donationType !== 'recurring') {
+        recurringAuth.checked = false;
+        recurringAuth.removeAttribute('required');
+      } else {
+        recurringAuth.setAttribute('required', 'required');
+      }
+    }
+
+    function showMethodFields() {
+      const method = document.querySelector('input[name="method"]:checked').value;
+      const fpxFields = document.getElementById('fpxFields');
+      const cardFields = document.getElementById('cardFields');
+      const tngFields = document.getElementById('tngFields');
+      const bank = document.getElementById('bank');
+      const fpxAcc = document.getElementById('fpxAcc');
+      const cardNum = document.getElementById('cardNum');
+      const expiry = document.getElementById('expiry');
+      const cvc = document.getElementById('cvc');
+
+      // Hide all fields
+      fpxFields.classList.add('hidden');
+      cardFields.classList.add('hidden');
+      tngFields.classList.add('hidden');
+
+      // Remove required attributes from all fields
+      bank.removeAttribute('required');
+      fpxAcc.removeAttribute('required');
+      cardNum.removeAttribute('required');
+      expiry.removeAttribute('required');
+      cvc.removeAttribute('required');
+
+      // Show and set required attributes for selected method
+      if (method === 'FPX') {
+        fpxFields.classList.remove('hidden');
+        bank.setAttribute('required', 'required');
+        fpxAcc.setAttribute('required', 'required');
+      } else if (method === 'Card') {
+        cardFields.classList.remove('hidden');
+        cardNum.setAttribute('required', 'required');
+        expiry.setAttribute('required', 'required');
+        cvc.setAttribute('required', 'required');
+      } else if (method === 'TNG') {
+        tngFields.classList.remove('hidden');
+      }
+    }
+
+    function validateCardNumber(cardNum) {
+      if (!cardNum) {
+        console.log('Card validation: Empty card number');
+        return false;
+      }
+      const cleaned = cardNum.replace(/[\s-]/g, '');
+      const isValid = /^\d{16}$/.test(cleaned);
+      console.log('Card validation: Number valid =', isValid);
+      return isValid;
+    }
+
+    function validateExpiry(expiry) {
+      if (!expiry) {
+        console.log('Card validation: Empty expiry');
+        return false;
+      }
+      const match = expiry.match(/^(0[1-9]|1[0-2])\/(\d{2})$/);
+      if (!match) {
+        console.log('Card validation: Invalid expiry format');
+        return false;
+      }
+      const month = parseInt(match[1], 10);
+      const year = parseInt(match[2], 10) + 2000;
+      const today = new Date();
+      const expiryDate = new Date(year, month - 1);
+      const isValid = expiryDate >= today;
+      console.log('Card validation: Expiry valid =', isValid);
+      return isValid;
+    }
+
+    function validateCVC(cvc) {
+      if (!cvc) {
+        console.log('Card validation: Empty CVC');
+        return false;
+      }
+      const isValid = /^\d{3}$/.test(cvc);
+      console.log('Card validation: CVC valid =', isValid);
+      return isValid;
+    }
+
+    function showThankYouMessage(name, amount, donationType, method, details) {
+      console.log('Showing Thank You modal for', name, amount, donationType, method);
+      const thankYouModal = document.getElementById('thankYouModal');
+      const modalBackdrop = document.getElementById('modalBackdrop');
+      const thankYouDetails = document.getElementById('thankYouDetails');
+
+      thankYouDetails.textContent = `Thank you, ${name}, for your RM${amount} ${donationType === 'recurring' ? 'monthly' : 'one-time'} donation via ${method}. ${details}`;
+      thankYouModal.classList.remove('hidden');
+      modalBackdrop.classList.remove('hidden');
+
+      setTimeout(() => {
+        console.log('Redirecting to pawsrescue.html');
+        window.location.href = 'pawsrescue.html';
+      }, 3000);
+    }
+
+    function processPayment() {
+      console.log('Processing payment...');
+      const name = document.getElementById('username').value.trim();
+      const amount = parseFloat(document.getElementById('amount').value);
+      const donationType = document.querySelector('input[name="donationType"]:checked').value;
+      const method = document.querySelector('input[name="method"]:checked').value;
+      const errorMessage = document.getElementById('errorMessage');
+
+      // Reset error message
+      errorMessage.style.display = 'none';
+      errorMessage.textContent = '';
+
+      // Basic validation
+      if (!name) {
+        errorMessage.textContent = 'Please enter your name.';
+        errorMessage.style.display = 'block';
+        console.log('Validation failed: No name');
+        return false;
+      }
+      if (!amount || amount <= 0) {
+        errorMessage.textContent = 'Please enter a valid donation amount.';
+        errorMessage.style.display = 'block';
+        console.log('Validation failed: Invalid amount');
+        return false;
+      }
+
+      // Recurring donation validation
+      if (donationType === 'recurring') {
+        const recurringAuth = document.getElementById('recurringAuth');
+        if (!recurringAuth.checked) {
+          errorMessage.textContent = 'You must authorize recurring monthly payments to proceed.';
+          errorMessage.style.display = 'block';
+          console.log('Validation failed: Recurring auth not checked');
+          return false;
+        }
+      }
+
+      // Payment method validation
+      let details = '';
+      if (method === 'FPX') {
+        console.log('Validating FPX...');
+        const bank = document.getElementById('bank').value;
+        const acc = document.getElementById('fpxAcc').value.trim();
+        if (!bank) {
+          errorMessage.textContent = 'Please select a bank.';
+          errorMessage.style.display = 'block';
+          console.log('Validation failed: No bank selected');
+          return false;
+        }
+        if (!acc) {
+          errorMessage.textContent = 'Please enter an account number.';
+          errorMessage.style.display = 'block';
+          console.log('Validation failed: No account number');
+          return false;
+        }
+        details = `Bank: ${bank}, Account: ${acc}.`;
+      } else if (method === 'Card') {
+        console.log('Validating Card...');
+        const cardNum = document.getElementById('cardNum').value;
+        const expiry = document.getElementById('expiry').value;
+        const cvc = document.getElementById('cvc').value;
+        if (!cardNum) {
+          errorMessage.textContent = 'Please enter a card number.';
+          errorMessage.style.display = 'block';
+          console.log('Validation failed: No card number');
+          return false;
+        }
+        if (!validateCardNumber(cardNum)) {
+          errorMessage.textContent = 'Please enter a valid 16-digit card number.';
+          errorMessage.style.display = 'block';
+          console.log('Validation failed: Invalid card number');
+          return false;
+        }
+        if (!expiry) {
+          errorMessage.textContent = 'Please enter an expiry date.';
+          errorMessage.style.display = 'block';
+          console.log('Validation failed: No expiry date');
+          return false;
+        }
+        if (!validateExpiry(expiry)) {
+          errorMessage.textContent = 'Please enter a valid expiry date (MM/YY) that is not in the past.';
+          errorMessage.style.display = 'block';
+          console.log('Validation failed: Invalid expiry');
+          return false;
+        }
+        if (!cvc) {
+          errorMessage.textContent = 'Please enter a CVC.';
+          errorMessage.style.display = 'block';
+          console.log('Validation failed: No CVC');
+          return false;
+        }
+        if (!validateCVC(cvc)) {
+          errorMessage.textContent = 'Please enter a valid 3-digit CVC.';
+          errorMessage.style.display = 'block';
+          console.log('Validation failed: Invalid CVC');
+          return false;
+        }
+        details = `Card ending in ${cardNum.replace(/[\s-]/g, '').slice(-4)}, Expiry: ${expiry}.`;
+      } else if (method === 'TNG') {
+        console.log('Validating TNG...');
+        details = `Please scan the QR to complete the payment.`;
+      } else {
+        errorMessage.textContent = 'Invalid payment method selected.';
+        errorMessage.style.display = 'block';
+        console.log('Validation failed: Invalid payment method');
+        return false;
+      }
+
+      // Store donation in localStorage
+      console.log('Storing donation:', { name, amount, donationType, method });
+      const donations = JSON.parse(localStorage.getItem('donations'));
+      donations.push({
+        name,
+        amount,
+        donationType,
+        method,
+        timestamp: new Date().toISOString()
+      });
+      localStorage.setItem('donations', JSON.stringify(donations));
+
+      // Show Thank You modal and redirect
+      console.log('Payment processed, showing Thank You modal');
+      showThankYouMessage(name, amount, donationType, method, details);
+
+      // Reset form
+      document.getElementById('paymentForm').reset();
+      toggleRecurringFields();
+      showMethodFields();
+      return false;
+    }
+  </script>
+</body>
+</html>

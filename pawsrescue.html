@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paws & Care Foundation</title>
+  <style type="text/css">
+    /* Body background */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8f9fa url('https://wallpapercat.com/w/full/f/d/7/1026829-3840x2160-desktop-4k-pets-background-image.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    /* Rest of your original CSS with updated social */
+    .main-title h1 {
+      font-size: 48px;
+      font-weight: bold;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .main-title p {
+      font-size: 22px;
+      color: #FFD1DC;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    #nav {
+      position: relative;
+      padding: 10px 0;
+      background-color: #f8f9fa;
+    }
+
+    #nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 90px;
+      justify-content: center;
+      margin: 0;
+    }
+
+    #nav ul li a {
+      background-color: #FF914D;
+      padding: 10px 16px;
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    #nav ul li a:hover {
+      background-color: #FF6B00;
+    }
+
+    #header {
+      background-color: #6A4C93;
+      padding: 20px 0;
+      color: white;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    #header h1 a {
+      color: white;
+      text-decoration: none;
+      font-size: 28px;
+    }
+
+    .logout {
+      color: #FFD1DC;
+      font-weight: bold;
+      float: right;
+      margin-top: -40px;
+      margin-right: 20px;
+    }
+
+    #main {
+      background-color: #ffffffcc;
+      padding: 40px 20px;
+      border-radius: 12px;
+      margin: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -15px;
+    }
+
+    .row > div {
+      padding: 0 15px;
+      box-sizing: border-box;
+    }
+
+    .8u {
+      flex: 0 0 66.6667%;
+      max-width: 66.6667%;
+    }
+
+    .4u {
+      flex: 0 0 33.3333%;
+      max-width: 33.3333%;
+    }
+
+    #sidebar {
+      background-color: #fff6f6;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #featured {
+      background: #f7faff;
+      padding: 40px 20px;
+      border-top: 3px dashed #c7c7c7;
+      border-bottom: 3px dashed #c7c7c7;
+    }
+
+    #featured .4u {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+
+    #footer {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://wallpapercat.com/w/full/f/d/7/1026829-3840x2160-desktop-4k-pets-background-image.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    #footer h2 {
+      color: #FFDD57;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+
+    #footer ul.default li {
+      margin-bottom: 8px;
+    }
+
+    #footer a {
+      color: #FF914D;
+      text-decoration: none;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+
+    #footer a:hover {
+      text-decoration: underline;
+    }
+
+    #copyright {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://wallpapercat.com/w/full/f/d/7/1026829-3840x2160-desktop-4k-pets-background-image.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #ddd;
+      padding: 15px 0;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    a.button {
+      background-color: #FF914D;
+      padding: 10px 20px;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      display: inline-block;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: background-color 0.3s;
+    }
+
+    a.button:hover {
+      background-color: #FF6B00;
+    }
+
+    .image.full img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-top: 10px;
+    }
+
+    .social {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px; /* Reduced gap for larger images */
+    }
+
+    .social img {
+      width: 200px; /* Increased size */
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.2s ease;
+    }
+
+    .social img:hover {
+      transform: scale(1.05);
+    }
+
+    .hero-header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://wallpapercat.com/w/full/f/d/7/1026829-3840x2160-desktop-4k-pets-background-image.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #FFDD57;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      border-bottom: 4px solid #FF914D;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .hero-header h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      margin: 0;
+      color: #FFFFFF;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #FFFFFF, #FFDD57);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: transform 0.3s ease;
+    }
+
+    .hero-header h1:hover {
+      transform: scale(1.02);
+    }
+
+    .hero-header p.tagline {
+      font-size: 1.5rem;
+      color: #FFD1DC;
+      margin-top: 10px;
+      font-style: italic;
+      animation: slideUp 1s ease;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+
+    /* User Icon and Dropdown */
+    .user-menu {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+    }
+
+    .user-icon {
+      background-color: #FF914D;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .user-icon:hover {
+      background-color: #FF6B00;
+      transform: scale(1.05);
+    }
+
+    .user-icon i {
+      color: white;
+      font-size: 20px;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      display: none;
+      z-index: 1000;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 10px 20px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+
+    .dropdown a:hover {
+      background-color: #FF914D;
+      color: white;
+    }
+
+    /* Profile Modal Styles */
+    .profile-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      background-color: white;
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      z-index: 1000;
+      animation: popIn 0.3s ease-out forwards;
+      display: none;
+    }
+
+    .profile-modal h3 {
+      color: #6A4C93;
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+
+    .profile-modal img.profile-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 2px solid #FF914D;
+    }
+
+    .profile-modal input[type="file"],
+    .profile-modal input[type="text"],
+    .profile-modal input[type="email"],
+    .profile-modal input[type="date"],
+    .profile-modal input[type="password"],
+    .profile-modal select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    .profile-modal button {
+      background-color: #FF914D;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 5px;
+      transition: background-color 0.3s;
+    }
+
+    .profile-modal button:hover {
+      background-color: #FF6B00;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: none;
+    }
+
+    .error, .success {
+      color: #D8000C;
+      font-size: 14px;
+      margin: 10px 0;
+    }
+
+    .success {
+      color: #4A6B2A;
+    }
+
+    .password-section {
+      display: none;
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .8u, .4u {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+      #sidebar {
+        margin-bottom: 20px;
+      }
+      .social {
+        flex-direction: column; /* Stack images vertically on small screens */
+      }
+      .social img {
+        width: 150px; /* Slightly smaller for mobile */
+      }
+    }
+
+    /* Footer-specific row adjustment for centering "Ways to Help" */
+    #footer .row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0 -15px;
+    }
+
+    #footer .4u {
+      flex: 0 0 50%;
+      max-width: 50%;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      #footer .4u {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Hero Header Section -->
+  <div class="hero-header">
+    <h1><a href="pawsrescue.html">PAWS & CARE FOUNDATION</a></h1>
+    <p class="tagline">Rescuing Animals Since 2010</p>
+    <ul class="contact-info">
+      <li><i class="fas fa-phone"></i> (60)07-888-2345</li>
+      <li><i class="fas fa-envelope"></i> animalsdonation@gmail.edu.my</li>
+    </ul>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="nav">
+    <ul>
+      <li><a href="pet adoption.html">Pets Adoption</a></li>
+      <li><a href="fun run.html">Event</a></li>
+      <li>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNuu4louRAPd_dzGwBldNIlyvxHRmC3HG2LbliHVDlUcP0EQ/viewform?usp=header" target="_blank">
+          Volunteer Registration
+        </a>
+      </li>
+      <li><a href="contact us.html">Pet food donation</a></li>
+      <li><a href="payment.html">Donate Now</a></li>
+    </ul>
+    <div class="user-menu">
+      <div class="user-icon" onclick="toggleDropdown()">
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="dropdown" id="userDropdown">
+        <a href="#" onclick="showProfileModal()">Profile</a>
+        <a href="tracker.html">Donation Tracker</a> 
+        <a href="#" onclick="logout()">Log Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <div id="main">
+    <div class="container">
+      <div class="row"> 
+        <!-- Sidebar -->
+        <div id="sidebar" class="4u">
+          <section>
+            <header>
+              <h2>Recent Rescues</h2>
+            </header>
+            <ul class="style">
+              <li>
+                <p class="posted">April 15, 2025</p>
+                <img src="506aac30-cda9-11ef-a731-f9a4461ea1cc.jpg" alt="Lucky the dog" style="width:400px;height:300px;" />
+                <p class="text">Lucky was found malnourished and injured. After treatment, he's now thriving in his new home.</p>
+              </li>
+              <li>
+                <p class="posted">May 5, 2025</p>
+                <img src="I-am-a-tortured-kitten.-My-owner-tortured-me-for-days-and-rescued-by-Rescue-Strays.jpeg" alt="Mittens the cat" style="width:400px;height:300px;" />
+                <p class="text">Mittens was rescued from a hoarding situation. She's now healthy and awaiting adoption.</p>
+              </li>
+            </ul>
+          </section>
+        </div>
+        
+        <!-- Content -->
+        <div id="content" class="8u">
+          <section style="text-align: center;">
+            <header>
+              <h2>Help Us Save Animals</h2>
+              <span class="byline">Your donation can make a difference</span>
+            </header>
+            <a href="#" class="image full" style="display: block; margin: 0 auto;">
+              <img src="Dog_rescue_society_0.jpeg" alt="Rescued dogs" style="width:100%;height:300px;" />
+            </a>
+            <p>Every year, thousands of animals are abandoned, abused, or left to fend for themselves. At <strong>Paws & Care Foundation</strong>, we rescue these vulnerable animals, provide medical care, and find them loving forever homes.</p>
+            <p>With your support, we can continue our vital work. Just $50 can feed a rescued animal for a month, $100 can cover vaccinations, and $500 can help with life-saving surgery.</p>
+            <a href="payment.html" class="button" style="margin: 20px auto; display: block; width: fit-content;">Donate Now</a>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured Causes -->
+  <div id="featured">
+    <div class="container">
+      <div class="row">
+        <div class="4u">
+          <h2>Medical Fund</h2>
+          <a href="#" class="image full"><img src="community-fund-photo-1.png" alt="Vet treating animal" /></a>
+          <p>Help us cover medical expenses for injured and sick animals. Your donation provides vaccinations, surgeries, and ongoing treatments.</p>
+          <p><a href="payment.html" class="button">Support Medical Care</a></p>
+        </div>
+        <div class="4u">
+          <h2>Shelter Fund</h2>
+          <a href="#" class="image full"><img src="state-of-the-shelters-blog-post-header.jpg" alt="Animal shelter" /></a>
+          <p>Contribute to our shelter operations, including food, bedding, and facility maintenance for our rescued animals.</p>
+          <p><a href="payment.html" class="button">Support Our Shelter</a></p>
+        </div>
+        <div class="4u">
+          <h2>Adoption Program</h2>
+          <a href="#" class="image full"><img src="iStock-1322461027-1-2000x1334.jpg" alt="Happy adoption" style="width:800px;height:600px;"/></a>
+          <p>Fund our adoption program that matches animals with loving families, including transportation and follow-up care.</p>
+          <p><a href="pet adoption.html" class="button">Adopt a pet now !</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="4u" style="flex: 0 0 50%; max-width: 50%;">
+          <section>
+            <h2>Ways to Help</h2>
+            <ul class="default">
+              <li><a href="fun run.html">Fun Run</a></li>
+              <li><a href="pet adoption.html">Adopt a pet</a></li>
+              <li><a href="contact us.html">Fundraise for Us</a></li>
+            </ul>
+          </section>
+        </div>
+        <div class="4u" style="flex: 0 0 50%; max-width: 50%;">
+          <section>
+            <h2>Contact Us</h2>
+            <ul class="contact">
+              <li><span class="icon icon-phone"></span> (60)07-888-2345</li>
+              <li><span class="icon icon-envelope"></span> animalsdonation@gmail.edu.my</li>
+              <li><span class="icon icon-map-marker"></span> University Tun Hussein Onn Malaysia</li>
+            </ul>
+            <div class="social">
+              <a href="#"><img src="Screenshot 2025-05-23 145549.png" alt="Facebook"></a>
+              <a href="#"><img src="Screenshot 2025-05-23 150018.png" alt="Instagram"></a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div id="copyright">
+    <div class="container">© 2025 Paws & Care Foundation. All rights reserved. </div>
+  </div>
+
+  <!-- Profile Modal -->
+  <div id="profileModal" class="profile-modal">
+    <h3>User Profile</h3>
+    <img id="profilePic" class="profile-pic" src="https://via.placeholder.com/100" alt="Profile Picture">
+    <input type="file" id="profilePicUpload" accept="image/*">
+    <p><strong>Username:</strong> <input type="text" id="profileUsername" placeholder="Enter username"></p>
+    <p><strong>Email:</strong> <input type="email" id="profileEmail" placeholder="Enter email"></p>
+    <p><strong>Name:</strong> <input type="text" id="profileName" placeholder="Enter name"></p>
+    <p><strong>Birthdate:</strong> <input type="date" id="profileBirthdate"></p>
+    <p><strong>Gender:</strong> 
+      <select id="profileGender">
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+    </p>
+    <p><strong>Total Donated:</strong> RM <span id="totalDonated">0</span></p>
+    <h4>Change Password</h4>
+    <div class="password-section">
+      <input type="password" id="currentPassword" placeholder="Current Password">
+      <input type="password" id="newPassword" placeholder="New Password">
+      <input type="password" id="confirmPassword" placeholder="Confirm New Password">
+    </div>
+    <button onclick="togglePasswordSection()">Toggle Password Change</button>
+    <p id="profileMessage" class="error"></p>
+    <button onclick="saveProfileChanges()">Save Changes</button>
+    <button onclick="closeProfileModal()">Close</button>
+  </div>
+  <div id="modalBackdrop" class="modal-backdrop"></div>
+
+  <script>
+    // Initialize localStorage for users and donations if not exists
+    if (!localStorage.getItem('users')) {
+      localStorage.setItem('users', JSON.stringify([]));
+    }
+    if (!localStorage.getItem('donations')) {
+      localStorage.setItem('donations', JSON.stringify([]));
+    }
+
+    // Toggle Dropdown
+    function toggleDropdown() {
+      const dropdown = document.getElementById('userDropdown');
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      const userMenu = document.querySelector('.user-menu');
+      if (!userMenu.contains(event.target)) {
+        document.getElementById('userDropdown').style.display = 'none';
+      }
+    });
+
+    // Show Profile Modal
+    function showProfileModal() {
+      const currentUser = localStorage.getItem('currentUser');
+      const users = JSON.parse(localStorage.getItem('users'));
+      const user = currentUser ? users.find(u => u.username.toLowerCase() === currentUser.toLowerCase()) : null;
+      const donations = JSON.parse(localStorage.getItem('donations'));
+      const userDonations = donations.filter(d => (user ? user.username : '').toLowerCase() === d.name.toLowerCase());
+      const totalDonated = userDonations.reduce((sum, d) => sum + d.amount, 0);
+
+      document.getElementById('profileUsername').value = user ? user.username : 'Guest';
+      document.getElementById('profileEmail').value = user?.email || '';
+      document.getElementById('profileName').value = user?.name || '';
+      document.getElementById('profileBirthdate').value = user?.birthdate || '';
+      document.getElementById('profileGender').value = user?.gender || '';
+      document.getElementById('totalDonated').textContent = totalDonated.toFixed(2);
+      document.getElementById('profilePic').src = user && user.profilePic ? user.profilePic : 'https://via.placeholder.com/100';
+      document.getElementById('profileMessage').textContent = '';
+      document.getElementById('currentPassword').value = '';
+      document.getElementById('newPassword').value = '';
+      document.getElementById('confirmPassword').value = '';
+      document.getElementById('profilePicUpload').value = '';
+
+      document.getElementById('profileModal').style.display = 'block';
+      document.getElementById('modalBackdrop').style.display = 'block';
+      document.getElementById('userDropdown').style.display = 'none';
+      document.querySelector('.password-section').style.display = 'none';
+    }
+
+    // Close Profile Modal
+    function closeProfileModal() {
+      document.getElementById('profileModal').style.display = 'none';
+      document.getElementById('modalBackdrop').style.display = 'none';
+    }
+
+    // Toggle Password Section
+    function togglePasswordSection() {
+      const passwordSection = document.querySelector('.password-section');
+      passwordSection.style.display = passwordSection.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Save Profile Changes
+    function saveProfileChanges() {
+      console.log('Save button clicked'); // Debug log
+      const users = JSON.parse(localStorage.getItem('users'));
+      let user = users.find(u => u.username.toLowerCase() === document.getElementById('profileUsername').value.toLowerCase());
+      const message = document.getElementById('profileMessage');
+      let changesMade = false;
+
+      // Create new user if not exists
+      if (!user) {
+        user = { username: document.getElementById('profileUsername').value, email: '', name: '', birthdate: '', gender: '', password: '', profilePic: '' };
+        users.push(user);
+      }
+
+      // Handle profile picture upload
+      const profilePicInput = document.getElementById('profilePicUpload');
+      if (profilePicInput.files.length > 0) {
+        const file = profilePicInput.files[0];
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('profilePic').src = e.target.result;
+          user.profilePic = e.target.result;
+          changesMade = true;
+          saveAfterUpload(); // Trigger save after image load
+        };
+        reader.readAsDataURL(file);
+        return; // Exit to handle async image load
+      }
+
+      // Handle other profile fields
+      const email = document.getElementById('profileEmail').value.trim();
+      const name = document.getElementById('profileName').value.trim();
+      const birthdate = document.getElementById('profileBirthdate').value;
+      const gender = document.getElementById('profileGender').value;
+      const originalUser = JSON.parse(JSON.stringify(user)); // Deep copy for comparison
+
+      if (email && user.email !== email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          message.textContent = 'Please enter a valid email address.';
+          message.className = 'error';
+          return;
+        }
+        user.email = email;
+        changesMade = true;
+      }
+
+      if (name && user.name !== name) {
+        user.name = name;
+        changesMade = true;
+      }
+
+      if (birthdate && user.birthdate !== birthdate) {
+        const today = new Date();
+        const birth = new Date(birthdate);
+        if (birth >= today) {
+          message.textContent = 'Birthdate must be in the past.';
+          message.className = 'error';
+          return;
+        }
+        user.birthdate = birthdate;
+        changesMade = true;
+      }
+
+      if (gender && user.gender !== gender) {
+        user.gender = gender;
+        changesMade = true;
+      }
+
+      if (user.username !== originalUser.username) {
+        changesMade = true;
+      }
+
+      // Handle password change
+      const currentPassword = document.getElementById('currentPassword').value;
+      const newPassword = document.getElementById('newPassword').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (currentPassword || newPassword || confirmPassword) {
+        if (!user.password || currentPassword !== user.password) {
+          message.textContent = 'Current password is incorrect.';
+          message.className = 'error';
+          return;
+        }
+        if (newPassword.length < 8) {
+          message.textContent = 'New password must be at least 8 characters.';
+          message.className = 'error';
+          return;
+        }
+        if (newPassword !== confirmPassword) {
+          message.textContent = 'New passwords do not match.';
+          message.className = 'error';
+          return;
+        }
+        user.password = newPassword;
+        changesMade = true;
+      }
+
+      // Save and update
+      if (changesMade || profilePicInput.files.length > 0) {
+        localStorage.setItem('users', JSON.stringify(users));
+        if (localStorage.getItem('currentUser')) localStorage.setItem('currentUser', user.username);
+        message.textContent = 'Profile updated successfully!';
+        message.className = 'success';
+      } else {
+        message.textContent = 'No changes made.';
+        message.className = 'error';
+      }
+
+      // Clear password fields
+      document.getElementById('currentPassword').value = '';
+      document.getElementById('newPassword').value = '';
+      document.getElementById('confirmPassword').value = '';
+    }
+
+    // Helper function to save after async image upload
+    function saveAfterUpload() {
+      const users = JSON.parse(localStorage.getItem('users'));
+      const user = users.find(u => u.username.toLowerCase() === document.getElementById('profileUsername').value.toLowerCase());
+      const message = document.getElementById('profileMessage');
+
+      localStorage.setItem('users', JSON.stringify(users));
+      if (localStorage.getItem('currentUser')) localStorage.setItem('currentUser', user.username);
+      message.textContent = 'Profile updated successfully!';
+      message.className = 'success';
+    }
+
+    // Logout
+    function logout() {
+      localStorage.removeItem('currentUser');
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>
